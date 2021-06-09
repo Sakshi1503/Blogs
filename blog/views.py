@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
+from django.urls import reverse
 from django.views.generic import (
     ListView,
     DetailView,
@@ -9,6 +10,8 @@ from django.views.generic import (
     DeleteView
 )
 from .models import Post
+from django.http import HttpResponseRedirect
+from .CustomPagination import CustomPagination
 
 
 def home(request):
@@ -19,6 +22,7 @@ def home(request):
 
 
 class PostListView(ListView):
+    pagination_class = CustomPagination
     model = Post
     template_name = 'blog/home.html'  # <app>/<model>_<viewtype>.html
     context_object_name = 'posts'
@@ -27,6 +31,7 @@ class PostListView(ListView):
 
 
 class UserPostListView(ListView):
+    # pagination_class = CustomPagination
     model = Post
     template_name = 'blog/user_posts.html'  # <app>/<model>_<viewtype>.html
     context_object_name = 'posts'
@@ -38,7 +43,18 @@ class UserPostListView(ListView):
 
 
 class PostDetailView(DetailView):
+    # pagination_class = CustomPagination
     model = Post
+
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        likes_connected = get_object_or_404(Post, id=self.kwargs['pk'])
+        liked = False
+        if likes_connected.likes.filter(id=self.request.user.id).exists():
+            liked = True
+        data['number_of_likes'] = likes_connected.number_of_likes()
+        data['post_is_liked'] = liked
+        return data
 
 
 class PostCreateView(LoginRequiredMixin, CreateView):
@@ -67,13 +83,22 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Post
-    success_url = '/'
+    success_url = '/blogs'
 
     def test_func(self):
         post = self.get_object()
         if self.request.user == post.author:
             return True
         return False
+
+
+def LikeView(request, pk):
+    post = get_object_or_404(Post, id=request.POST.get('post_id'))
+    if post.likes.filter(id=request.user.id).exists():
+        post.likes.remove(request.user)
+    else:
+        post.likes.add(request.user)
+    return HttpResponseRedirect(reverse('post-detail', args=[str(pk)]))
 
 
 def about(request):
