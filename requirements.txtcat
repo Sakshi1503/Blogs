@@ -47,6 +47,7 @@ geomet==0.1.2
 geopy==2.1.0
 gpg===1.13.1-unknown
 gremlinpython==3.4.6
+gunicorn==20.1.0
 html5lib==1.0.1
 httplib2==0.14.0
 hyperlink==19.0.0
