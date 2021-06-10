@@ -8,7 +8,6 @@ bcrypt==3.2.0
 beautifulsoup4==4.9.3
 blinker==1.4
 boto==2.49.0
-Brlapi==0.7.0
 cassandra-driver==3.24.0
 certifi==2019.11.28
 cffi==1.14.0
@@ -27,10 +26,12 @@ defusedxml==0.7.1
 distlib==0.3.0
 distro==1.4.0
 distro-info===0.23ubuntu1
+dj-database-url==0.5.0
 Django==3.1.5
 django-allauth==0.44.0
 django-crispy-forms==1.10.0
 django-cronjobs==0.2.3
+django-heroku==0.3.1
 django-rest-auth==0.9.5
 django-rest-passwordreset==1.1.0
 djangorestframework==3.12.2
@@ -47,6 +48,7 @@ geomet==0.1.2
 geopy==2.1.0
 gpg===1.13.1-unknown
 gremlinpython==3.4.6
+gunicorn==20.1.0
 html5lib==1.0.1
 httplib2==0.14.0
 hyperlink==19.0.0
@@ -141,6 +143,7 @@ w3lib==1.21.0
 wadllib==1.3.3
 wcwidth==0.1.8
 webencodings==0.5.1
+whitenoise==5.2.0
 whois==0.8
 yum==0.0.1
 zipp==1.0.0
