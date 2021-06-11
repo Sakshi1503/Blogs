@@ -29,11 +29,12 @@
           <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="navbar-nav mr-auto">
               <a class="nav-item nav-link" href="{% url 'blog-home' %}">Home</a>
-              <a class="nav-item nav-link" href="{% url 'blog-about' %}">About</a>&ebsp;
+              <a class="nav-item nav-link" href="{% url 'blog-about' %}">About</a>
+                &nbsp;&nbsp;
                 <form class="d-flex" method="POST" action="{% url 'search-post' %}">
                     {% csrf_token %}
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched">&nbsp;
-                    <button class="btn btn-outline-dark" type="submit">Search</button>
+                    <button class="btn btn-outline-light" type="submit">Search</button>
                 </form>
             </div>
             <!-- Navbar Right Side -->
