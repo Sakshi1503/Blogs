@@ -18,16 +18,24 @@
                 </small>
             </div>
         </form>
-        <div class="border-top pt-3">
-            <small class="text-muted">
-                Need An Account? <a class="ml-2" href="{% url 'register' %}">Sign Up Now</a>
-            </small>
-        </div>
         <div class="border-top pt-3 social">
             <a href="{% provider_login_url 'github' %}" class="btn btn-secondary">
                 <i class="fa fa-github fa-fw"></i>
                 <span>Login with GitHub</span>
             </a>
+            <a href="{% provider_login_url 'google' %}" class="btn btn-secondary">
+                <i class="fa fa-google fa-fw"></i>
+                <span>Login with Google</span>
+            </a>
+            <a href="{% provider_login_url 'facebook' %}" class="btn btn-secondary">
+                <i class="fa fa-facebook fa-fw"></i>
+                <span>Login with Facebook</span>
+            </a>
+        </div>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Need An Account? <a class="ml-2" href="{% url 'register' %}">Sign Up Now</a>
+            </small>
         </div>
     </div>
 {% endif %}
