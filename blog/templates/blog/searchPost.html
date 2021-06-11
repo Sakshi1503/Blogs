@@ -2,7 +2,7 @@
 {% block content %}
     <center>
         {% if searched %}
-            <h4>You searched for {{searched}}</h4>
+            <h4>You searched for "<i>{{searched}}</i>"</h4>
             <br/>
             {% for blog in blogs %}
                 <h4><a href="{% url 'post-detail' blog.id %}">{{blog}}</a></h4>
