@@ -9,7 +9,7 @@ from django.views.generic import (
     UpdateView,
     DeleteView
 )
-from .models import Post
+from .models import Post, Comment
 from django.http import HttpResponseRedirect
 
 
@@ -108,3 +108,11 @@ def searchPost(request):
         return render(request, 'blog/searchPost.html', {'searched': searched,'blogs':blogs})
     else:
         return render(request, 'blog/searchPost.html', {})
+
+class CommentCreateView(LoginRequiredMixin, CreateView):
+    model = Comment
+    fields = ['body']
+
+    def form_valid(self, form): 
+        form.instance.author = self.request.user
+        return super().form_valid(form)
