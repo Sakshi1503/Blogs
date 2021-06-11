@@ -102,4 +102,8 @@ def about(request):
 
 
 def searchPost(request):
-    return render(request, 'blog/searchPost.html', {})
+    if request.method == "POST":
+        searched = request.POST['searched']
+        return render(request, 'blog/searchPost.html', {'searched': searched})
+    else:
+        return render(request, 'blog/searchPost.html', {})

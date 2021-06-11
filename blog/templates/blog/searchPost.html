@@ -1,6 +1,10 @@
 {% extends "blog/base.html" %}
 {% block content %}
     <center>
-        <h1>You searched for...</h1>
+        {% if searched %}
+            <h1>You searched for {{searched}}</h1>
+        {% else %}
+            <h1>Hey! you forgot to search for a Blog</h1>
+        {% endif %}
     </center>
 {% endblock content %}
