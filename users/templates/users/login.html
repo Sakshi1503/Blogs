@@ -1,5 +1,6 @@
 {% extends "blog/base.html" %}
 {% load crispy_forms_tags %}
+{% load socialaccount %}
 {% block content %}
 {% if user.is_authenticated %}
     <meta http-equiv="refresh" content="0;url='http://127.0.0.1:8000/profile/'" />
