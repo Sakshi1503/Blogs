@@ -99,3 +99,7 @@ def LikeView(request, pk):
 
 def about(request):
     return render(request, 'blog/about.html', {'title': 'About'})
+
+
+def searchPost(request):
+    return render(request, 'blog/searchPost.html', {})
