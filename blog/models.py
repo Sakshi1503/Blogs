@@ -31,4 +31,4 @@ class Comment(models.Model):
         return '%s - %s - %s' % (self.post.title, self.author, self.post.pk)
 
     def get_absolute_url(self):
-        return reverse('post-detail', kwargs={'pk': self.pk})
+        return reverse('post-detail', kwargs={'pk': self.post.pk})
