@@ -27,6 +27,9 @@ class Comment(models.Model):
     body = models.TextField()
     date_added = models.DateTimeField(auto_now_add=True)
 
-    # def __str__(self):
-    #     return '%s - %s' % (self.post.title, self.author)
+    def __str__(self):
+        return '%s - %s - %s' % (self.post.title, self.author, self.post.primary_key)
+
+    def get_absolute_url(self):
+        return reverse('post-detail', kwargs={'pk': self.pk})
 
