@@ -18,9 +18,9 @@
         <br/>
         {% if user.is_authenticated %}
             {%if not post.comments.all %}
-            No Comments Yet...<a href="{% url 'comment-add' post.pk %}"> Add one</a>
+            No Comments Yet...<a href="{% url 'comment-add' object.id %}"> Add one</a>
             {% else %}
-                <a href="{% url 'comment-add' post.pk %}">Add comment</a>
+                <a href="{% url 'comment-add' object.id %}">Add comment</a>
                 <br/><br/>
                 {% for comment in post.comments.all %}
                     <strong>{{ comment.author }} - {{comment.date_added}}</strong>
