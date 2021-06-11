@@ -11,7 +11,6 @@ from django.views.generic import (
 )
 from .models import Post
 from django.http import HttpResponseRedirect
-from .CustomPagination import CustomPagination
 
 
 def home(request):
@@ -22,7 +21,6 @@ def home(request):
 
 
 class PostListView(ListView):
-    pagination_class = CustomPagination
     model = Post
     template_name = 'blog/home.html'  # <app>/<model>_<viewtype>.html
     context_object_name = 'posts'
@@ -31,7 +29,6 @@ class PostListView(ListView):
 
 
 class UserPostListView(ListView):
-    # pagination_class = CustomPagination
     model = Post
     template_name = 'blog/user_posts.html'  # <app>/<model>_<viewtype>.html
     context_object_name = 'posts'
@@ -43,7 +40,6 @@ class UserPostListView(ListView):
 
 
 class PostDetailView(DetailView):
-    # pagination_class = CustomPagination
     model = Post
 
     def get_context_data(self, **kwargs):
