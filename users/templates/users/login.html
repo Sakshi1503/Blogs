@@ -23,9 +23,10 @@
             </small>
         </div>
         <div class="border-top pt-3 social">
-            <li class = "facebook">
-                <a href="{% url 'social:begin' 'facebook'%}"> SIGN IN WITH FACEBOOK </a>
-            </li>
+            <a href="{% provider_login_url 'github' %}" class="btn btn-secondary">
+                <i class="fa fa-github fa-fw"></i>
+                <span>Login with GitHub</span>
+            </a>
         </div>
     </div>
 {% endif %}
