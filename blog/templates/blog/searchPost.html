@@ -5,8 +5,8 @@
             <h4>You searched for {{searched}}</h4>
             <br/>
             {% for blog in blogs %}
-                <a href="{% url 'post-detail' blog.id %}">{{blog}}</a>
-                <br/>
+                <h4><a href="{% url 'post-detail' blog.id %}">{{blog}}</a></h4>
+                <hr/>
             {% endfor %}
         {% else %}
             <h4>Hey! you forgot to search for a Blog</h4>
