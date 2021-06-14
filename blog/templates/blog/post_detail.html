@@ -17,18 +17,18 @@
       <p class="article-content">{{ object.content }}</p>
         <br/>
         {% if user.is_authenticated %}
-            {%if not post.comments.all %}
-            No Comments Yet...<a href="{% url 'comment-add' object.id %}"> Add one</a>
-            {% else %}
-                <a href="{% url 'comment-add' object.id %}">Add comment</a>
-                <br/><br/>
-                {% for comment in post.comments.all %}
-                    <strong>{{ comment.author }} - {{comment.date_added}}</strong>
-                    <br/>
-                    {{ comment.body }}
-                    <hr>
-                {% endfor %}
-            {% endif %}
+            <a href="{% url 'comment-add' object.id %}">Add comment</a>
+            <br/><br/>
+        {% endif %}
+        {%if not post.comments.all %}
+            <h5>No Comments Yet</h5>
+        {% else %}
+            {% for comment in post.comments.all %}
+                <strong>{{ comment.author }} - {{comment.date_added}}</strong>
+                <br/>
+                {{ comment.body }}
+                <hr>
+            {% endfor %}
         {% endif %}
     </div>
      <form action="{% url 'like_post' post.pk %}" method="POST">
